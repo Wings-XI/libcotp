@@ -1,3 +1,15 @@
+# libcotp - Windows Port
+
+Port of the libcotp library which compiles on Windows using Visual Studio (32-bit and 64-bit)
+
+Ported by Twilight under the same license.
+
+The non-portable gcrypt library has been replaced by the cross-platform OpenSSL library (tested with versions 1.1 and 3.0)
+
+
+
+Original README.md:
+
 # libcotp
 <a href="https://scan.coverity.com/projects/paolostivanin-libcotp">
   <img alt="Coverity Scan Build Status"

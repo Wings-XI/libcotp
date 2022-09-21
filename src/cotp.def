@@ -1,0 +1,10 @@
+LIBRARY libcotp
+
+EXPORTS
+	get_hotp
+	get_totp
+	get_steam_totp
+	get_totp_at
+	get_steam_totp_at
+	totp_verify
+	hotp_verify

@@ -1,9 +1,10 @@
 #pragma once
-#include <gcrypt.h>
 
-#define SHA1 GCRY_MD_SHA1
-#define SHA256 GCRY_MD_SHA256
-#define SHA512 GCRY_MD_SHA512
+#include <stdint.h>
+
+#define SHA1 1
+#define SHA256 2
+#define SHA512 3
 
 typedef enum _cotp_errno {
     VALID = 0,
@@ -19,7 +20,7 @@ typedef enum _cotp_errno {
 extern "C" {
 #endif
 char   *get_hotp            (const char     *base32_encoded_secret,
-                             long            counter,
+                             int64_t         counter,
                              int             digits,
                              int             sha_algo,
                              cotp_error_t   *err_code);
@@ -36,14 +37,14 @@ char   *get_steam_totp      (const char     *base32_encoded_secret,
 
 
 char   *get_totp_at         (const char     *base32_encoded_secret,
-                             long            time,
+                             int64_t         time,
                              int             digits,
                              int             period,
                              int             sha_algo,
                              cotp_error_t   *err_code);
 
 char   *get_steam_totp_at   (const char     *base32_encoded_secret,
-                             long            timestamp,
+                             int64_t         timestamp,
                              int             period,
                              cotp_error_t   *err_code);
 
@@ -54,7 +55,7 @@ int     totp_verify         (const char     *base32_encoded_secret,
                              int             sha_algo);
 
 int     hotp_verify         (const char     *base32_encoded_secret,
-                             long            counter,
+                             int64_t         counter,
                              int             digits,
                              const char     *user_hotp,
                              int             sha_algo);

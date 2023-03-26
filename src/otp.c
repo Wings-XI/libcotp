@@ -169,7 +169,7 @@ compute_hmac(const char *K, int64_t C, int algo)
 		free(secret);
 		return NULL;
 	}
-	size_t md_len = 0;
+	size_t md_len = EVP_MAX_MD_SIZE;
 	if (EVP_DigestSignFinal(hd, hmac, &md_len) != 1) {
 		free(hmac);
 		EVP_PKEY_free(pkey);
